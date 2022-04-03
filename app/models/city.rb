@@ -1,6 +1,6 @@
 class City
   # populate this with all known cities
-  CITY_CODES_DICTIONARY = { LA: "Los Angeles", NYC: "New York City" }
+  CITY_CODES_DICTIONARY = { LA: "Los Angeles", NYC: "New York City", CHI: "Chicago" }
 
   def initialize(city)
     @city = city

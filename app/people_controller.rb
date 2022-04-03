@@ -7,13 +7,13 @@ class PeopleController
 
   def normalize
     people = PeopleParserService.new(
-      dollar_format: params[:dollar_format],
-      percent_format: params[:percent_format]
+      dollar_sep_data: params[:dollar_format],
+      percent_sep_data: params[:percent_format]
     ).process
     # we don't use `people` anymore, we can mutate it in place for performance
     people
-      .sort_by! { |person| person.first_name }
-      .map! { |person| person.to_s }
+      .sort_by! { |person| person.send(params[:order]) }
+      .map!(&:to_s)
   end
 
   private

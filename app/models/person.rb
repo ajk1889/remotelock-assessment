@@ -2,13 +2,13 @@ require "date"
 require_relative "./city"
 
 class Person
-  attr_reader :city, :birthdate, :first_name
+  attr_reader :city, :birthdate, :first_name, :last_name
 
   def initialize(city:, birthdate:, first_name:, last_name: nil)
     @city = City.new(city)
     @birthdate = Date.parse(birthdate)
     @first_name = first_name
-    # we don't care about the last_name, no need to set it.
+    @last_name = last_name
   end
 
   def to_s
