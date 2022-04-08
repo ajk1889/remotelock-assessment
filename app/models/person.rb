@@ -1,4 +1,4 @@
-require "date"
+require_relative "./date_wrapper"
 require_relative "./city"
 
 class Person
@@ -6,7 +6,7 @@ class Person
 
   def initialize(city:, birthdate:, first_name:, last_name: nil)
     @city = City.new(city)
-    @birthdate = Date.parse(birthdate)
+    @birthdate = DateWrapper.new(birthdate)
     @first_name = first_name
     @last_name = last_name
   end

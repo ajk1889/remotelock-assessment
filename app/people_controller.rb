@@ -9,7 +9,11 @@ class PeopleController
   def normalize
     dollar_parsed_data = CsvParserService.new(params[:dollar_format], " $ ").process
     percent_parsed_data = CsvParserService.new(params[:percent_format], " % ").process
-    all_people_data = dollar_parsed_data + percent_parsed_data
+
+    pipe_parsed_data = !params[:pipe_format].nil? ?
+      CsvParserService.new(params[:pipe_format], " | ").process :
+      []
+    all_people_data = dollar_parsed_data + percent_parsed_data + pipe_parsed_data
     AttributeSorterService.new(all_people_data, params[:order]).process.map!(&:to_s)
   end
 
